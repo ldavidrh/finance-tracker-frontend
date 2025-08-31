@@ -8,6 +8,7 @@ export interface LoginFormModel {
 export interface SignUpFormModel {
   email: FormControl<string>;
   password: FormControl<string>;
+  birthdate: FormControl<string>;
   firstName: FormControl<string>;
   lastName: FormControl<string>;
 }

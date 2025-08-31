@@ -29,6 +29,22 @@
           }
         </mat-form-field>
         <mat-form-field style="width: 100%">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="birthdate"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          @if (signupForm.controls.birthdate.errors?.['required']) {
+          <mat-error>Este campo es requerido</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field style="width: 100%">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" type="email" />
           @if (signupForm.controls.email.errors?.['required']) {

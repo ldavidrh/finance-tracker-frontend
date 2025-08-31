@@ -19,6 +19,8 @@ import { Router, RouterModule } from '@angular/router';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthService } from '../../core/services/auth/auth-service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-signup',
@@ -30,6 +32,8 @@ import { HttpErrorResponse } from '@angular/common/http';
     MatButtonModule,
     RouterModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   templateUrl: './signup.html',
   styleUrl: './signup.scss',
@@ -46,6 +50,7 @@ export class Signup {
     this.signupForm = this.fb.group<SignUpFormModel>({
       firstName: this.fb.control<string>('', [Validators.required]),
       lastName: this.fb.control<string>('', [Validators.required]),
+      birthdate: this.fb.control<string>('', [Validators.required]),
       email: this.fb.control<string>('', [
         Validators.required,
         Validators.email,
