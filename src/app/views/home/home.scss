@@ -1,0 +1,32 @@
+.container {
+  height: 100dvh;
+}
+.main {
+  padding: 2rem;
+}
+
+.dashboard-header {
+  border-bottom: 1px solid darkgray;
+  margin-bottom: 2rem;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidenav {
+  height: 100%;
+}
+.sidenav-content {
+  padding: 16px;
+}
+
+.content {
+  width: 100%;
+
+  p {
+    margin-top: 0;
+  }
+}

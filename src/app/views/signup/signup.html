@@ -15,15 +15,15 @@
         <mat-form-field style="width: 100%">
           <mat-label>Nombres</mat-label>
           <input matInput formControlName="firstName" type="text" />
-          @if (signupForm.controls.firstName.errors?.['required']) {
-          <mat-error>Este campo es requerido</mat-error>
+          @if (signupForm.controls.firstName.errors?.["required"]) {
+            <mat-error>Este campo es requerido</mat-error>
           }
         </mat-form-field>
         <mat-form-field style="width: 100%">
           <mat-label>Apellidos</mat-label>
           <input matInput formControlName="lastName" type="text" />
-          @if (signupForm.controls.lastName.errors?.['required']) {
-          <mat-error>Este campo es requerido</mat-error>
+          @if (signupForm.controls.lastName.errors?.["required"]) {
+            <mat-error>Este campo es requerido</mat-error>
           }
         </mat-form-field>
         <mat-form-field style="width: 100%">
@@ -38,24 +38,25 @@
             [for]="picker"
           ></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          @if (signupForm.controls.birthdate.errors?.['required']) {
-          <mat-error>Este campo es requerido</mat-error>
+          @if (signupForm.controls.birthdate.errors?.["required"]) {
+            <mat-error>Este campo es requerido</mat-error>
           }
         </mat-form-field>
         <mat-form-field style="width: 100%">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" type="email" />
-          @if (signupForm.controls.email.errors?.['required']) {
-          <mat-error>Este campo es requerido</mat-error>
-          } @if (signupForm.controls.email.errors?.['email']) {
-          <mat-error>Debe ser un email</mat-error>
+          @if (signupForm.controls.email.errors?.["required"]) {
+            <mat-error>Este campo es requerido</mat-error>
+          }
+          @if (signupForm.controls.email.errors?.["email"]) {
+            <mat-error>Debe ser un email</mat-error>
           }
         </mat-form-field>
         <mat-form-field style="width: 100%">
           <mat-label>Contraseña</mat-label>
           <input matInput formControlName="password" type="password" />
-          @if (signupForm.controls.password.errors?.['required']) {
-          <mat-error>Este campo es requerido</mat-error>
+          @if (signupForm.controls.password.errors?.["required"]) {
+            <mat-error>Este campo es requerido</mat-error>
           }
         </mat-form-field>
         <button mat-flat-button style="width: 100%">Registrarse</button>

@@ -11,7 +11,7 @@ import {
   ServerErrorResponse,
   SignUpFormModel,
   SignUpRequest,
-} from '../../shared/models';
+} from '../../shared/models/models';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +21,9 @@ import { AuthService } from '../../core/services/auth/auth-service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ToastType } from '../../shared/models/toast.model';
+import { Toast } from '../../shared/components/toast/toast';
+import { UserService } from '../../core/services/users/user-service';
 
 @Component({
   selector: 'app-signup',
@@ -42,6 +45,7 @@ export class Signup {
   private snackBar = inject(MatSnackBar);
   private fb = inject(NonNullableFormBuilder);
   private authService = inject(AuthService);
+  private userService = inject(UserService);
   private router = inject(Router);
 
   signupForm: FormGroup<SignUpFormModel>;
@@ -61,18 +65,30 @@ export class Signup {
 
   onSubmit() {
     if (this.signupForm.invalid) {
-      this.snackBar.open('Completar los campos del formulario');
+      this.snackBar.openFromComponent(Toast, {
+        data: {
+          message: 'Revisa todos los campos obligatorios',
+          type: ToastType.WARNING,
+        },
+      });
       return;
     }
 
-    this.authService.signup(this.signupForm.value as SignUpRequest).subscribe({
+    this.userService.signup(this.signupForm.value as SignUpRequest).subscribe({
       next: () => {
-        //debemos redirigir al screen de confirmación de email
-        this.router.navigate(['register']);
+        this.snackBar.openFromComponent(Toast, {
+          data: {
+            message: 'Usuario registrado exitosamente',
+            type: ToastType.SUCCESS,
+          },
+        });
+        this.router.navigate(['login']);
       },
       error: (err: HttpErrorResponse) => {
         const error = err.error as ServerErrorResponse;
-        console.log(err.message);
+        this.snackBar.openFromComponent(Toast, {
+          data: { message: error.message, type: ToastType.ERROR },
+        });
       },
     });
   }

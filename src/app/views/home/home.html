@@ -1,0 +1,34 @@
+<div class="w-full h-full">
+  {{ expenses$ | async }}
+  <mat-sidenav-container class="sidenav">
+    <mat-sidenav mode="side" opened>
+      <div class="sidenav-content">
+        <div class="flex mb-4 justify-center">
+          <img src="assets/Logotipo.svg" width="150" />
+        </div>
+        <mat-divider></mat-divider>
+        <mat-nav-list>
+          @for (item of navItems(); track $index) {
+            <a mat-list-item [routerLink]="item.url">
+              <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+              {{ item.title }}
+            </a>
+          }
+        </mat-nav-list>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <main class="mx-5">
+        <div>
+          <h1>Dashboard</h1>
+          <p>
+            Bienvenido de vuelta Luis Restrepo! aquí un resumen de tus finanzas.
+          </p>
+        </div>
+        <div>
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

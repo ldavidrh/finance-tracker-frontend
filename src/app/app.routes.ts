@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { dashboardGuard } from './core/guards/dashboard-guard';
 
 export const routes: Routes = [
   {
@@ -15,9 +16,21 @@ export const routes: Routes = [
       import('./views/confirm-email/confirm-email').then((c) => c.ConfirmEmail),
   },
   {
-    path: 'dashboard',
-    loadComponent: () =>
-      import('./views/dashboard/dashboard').then((c) => c.Dashboard),
+    path: 'home',
+    loadComponent: () => import('./views/home/home').then((c) => c.Home),
+    canActivate: [dashboardGuard],
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./views/dashboard/dashboard').then((c) => c.Dashboard),
+      },
+      {
+        path: 'expenses',
+        loadComponent: () =>
+          import('./views/expenses/expenses').then((c) => c.Expenses),
+      },
+    ],
   },
 
   { path: '', pathMatch: 'full', redirectTo: 'login' },
