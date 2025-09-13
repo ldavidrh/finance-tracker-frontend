@@ -1,36 +1,13 @@
 <div>
   <div class="flex gap-4">
-    <mat-card class="w-full">
-      <mat-card-content class="h-full">
-        <div class="flex justify-between h-full">
-          <div class="flex flex-col justify-center h-full">
-            <div class="text-s text-gray-500">Ingresos del mes</div>
-            <div class="text-xl">COP {{ 8500000 | number }}</div>
-          </div>
-          <div
-            class="border-xs bg-green-300 rounded-xl h-fit px-2 py-1 flex items-center justify-center gap-1"
-          >
-            <mat-icon class="text-green-700">trending_up</mat-icon>
-            <span class="text-green-700">200</span>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
-    <mat-card class="w-full">
-      <mat-card-content class="h-full">
-        <div class="flex justify-between h-full">
-          <div class="flex flex-col justify-center h-full">
-            <div class="text-s text-gray-500">Gastos del mes</div>
-            <div class="text-xl">COP {{ 7000000 | number }}</div>
-          </div>
-          <div
-            class="border-xs bg-red-300 rounded-xl h-fit px-2 py-1 flex items-center justify-center gap-1"
-          >
-            <mat-icon class="text-red-700">trending_down</mat-icon>
-            <span class="text-red-700">200</span>
-          </div>
-        </div>
-      </mat-card-content>
-    </mat-card>
+    <app-stat-card title="Presupuesto" class="grow">
+      <ng-container>COP {{ 2500000 | number }}</ng-container>
+    </app-stat-card>
+    <app-stat-card title="Gastos" class="grow">
+      <ng-container> COP {{ 1750000 | number }} </ng-container>
+    </app-stat-card>
+    <app-stat-card title="Porcentaje de gastos" class="grow">
+      <ng-container> {{ (1750000 * 100) / 2500000 | number }}% </ng-container>
+    </app-stat-card>
   </div>
 </div>
